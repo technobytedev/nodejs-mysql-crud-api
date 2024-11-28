@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "jocos_payroll_user",
+    "password": "cedrickarldb",
+    "database": "store",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3308"
+  },
+  "test": {
+    "username": "jocos_payroll_user",
+    "password": "cedrickarldb",
+    "database": "store",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3308"
+  },
+  "production": {
+    "username": "jocos_payroll_user",
+    "password": "cedrickarldb",
+    "database": "store",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3308"
+  }
+}
