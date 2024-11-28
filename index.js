@@ -1,8 +1,9 @@
 const express = require('express');
 const { sequelize, User } = require('./models');
 
+
 const app = express();
-const port = 3000;
+const port = 8000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -19,10 +20,10 @@ app.get('/', async (req, res) => {
 });
 
 // Route to create user
-app.post('/users', async (req, res) => {
+app.post('/user/create', async (req, res) => {
   try {
-    const { firstname, lastname } = req.body;
-    const user = await User.create({ firstname, lastname });
+    const { username, password, email } = req.body;
+    const user = await User.create({ username, password, email });
     res.status(201).json(user);
   } catch (error) {
     console.error('Error inserting user:', error);
@@ -42,20 +43,21 @@ app.get('/users', async (req, res) => {
 });
 
 // Route to update a user
-app.put('/users/:id', async (req, res) => {
+app.put('/user/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { firstname, lastname } = req.body;
+    const { username, password, email } = req.body;
     const user = await User.findByPk(id);
-    
+
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    user.firstname = firstname;
-    user.lastname = lastname;
+    user.username = username;
+    user.password = password;
+    user.email = email;
     await user.save();
-    
+
     res.status(200).json(user);
   } catch (error) {
     console.error('Error updating user:', error);
